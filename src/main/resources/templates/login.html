@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login Page</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Login</h1>
+        </header>
+        <main>
+            <form class="form" action="#" th:action="@{/login}" th:object="${user}" method="post" >
+                <div>
+                    <label for="username"> Your login username. </label>
+                    <input type="text" th:field="*{username}" />
+                    <div class="errmsg" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</div>
+                </div>
+                <div>
+                    <label for="password"> Your password. </label>
+                    <input type="text" th:field="*{password}" />
+                    <div class="errmsg" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Invalid Password</div>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign up an account</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Registration</h1>
+        </header>
+        <main>
+            <form class="form" action="#" th:action="@{/signup}" th:object="${user}" method="post" >
+                <div>
+                    <label for="username"> Your desired username. </label>
+                    <input type="text" th:field="*{username}" />
+                    <div class="errmsg" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Invalid Username</div>
+                </div>
+                <div>
+                    <label for="fullname"> Your full name. </label>
+                    <input type="text" th:field="*{fullname}" />
+                    <div class="errmsg" th:if="${#fields.hasErrors('fullname')}" th:errors="*{fullname}">Name Error</div>
+                </div>
+                <div>
+                    <label for="email"> Your email address. </label>
+                    <input type="text" th:field="*{email}" />
+                    <div class="errmsg" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</div>
+                </div>
+                <div>
+                    <label for="password"> Your desired password. </label>
+                    <input type="text" th:field="*{password}" />
+                    <div class="errmsg" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Invalid Password.</div>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+    </body>
+</html>

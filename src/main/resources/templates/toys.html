@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Toy List</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Toys:</h1>
+            <p>There are <span th:text="${toyscount}"></span> toys in our toy store!</p>
+        </header>
+        <div class="errmsg" th:text="${#strings.isEmpty(msg)}?'':${msg}">Add To Cart Error</div>
+        <main>
+            <table class="toylist">
+                <tr th:each="toy: ${toys}">
+                    <td class="name" th:text="${toy.name}">Toy Name</td>
+                    <td class="desc" th:text="${toy.description}">Toy Description</td>
+                    <td class="link">
+                        <a href=details.html th:href="@{/toys/details(id=${toy.id})}">More Details...</a>
+                    </td>
+                    <td class="button">
+                        <a th:href="@{/toys/addToCart(toyid=${toy.id})}">Add To Shopping Cart</a>
+                    </td>
+                </tr>
+            </table>
+            <div class="link">
+                <a href="cart.html" th:href="@{/cart}">View Shopping Cart (<span th:text="${cartcount}"></span>)</a>
+            </div>
+        </main>
+    </body>
+</html>

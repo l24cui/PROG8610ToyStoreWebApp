@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Toy Details</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Description</h1>
+        </header>
+        <main>
+            <h3>This is the description about...
+                <div class="detailname" th:text="${name}">Toy Name</div>
+            </h3>
+            <p>Description:</p>
+            <p class="detaildesc" th:text="${description}">Toy Description</p>
+        </main>
+    </body>
+</html>
