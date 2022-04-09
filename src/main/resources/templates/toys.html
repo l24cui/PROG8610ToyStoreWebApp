@@ -9,8 +9,8 @@
             <h1>Toys:</h1>
             <p>There are <span th:text="${toyscount}"></span> toys in our toy store!</p>
         </header>
-        <div class="errmsg" th:text="${#strings.isEmpty(msg)}?'':${msg}">Add To Cart Error</div>
         <main>
+            <div class="errmsg" th:text="${#strings.isEmpty(msg)}?'':${msg}">Add To Cart Error</div>
             <table class="toylist">
                 <tr th:each="toy: ${toys}">
                     <td class="name" th:text="${toy.name}">Toy Name</td>
