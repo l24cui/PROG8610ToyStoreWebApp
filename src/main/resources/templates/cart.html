@@ -14,7 +14,7 @@
                     <td class="name" th:text="${rec.name}">Toy Name</td>
                     <td class="desc" th:text="${rec.description}">Toy Description</td>
                     <td class="button">
-                        <a th:href="@{/toys/removeFromCart(id=${rec.cartid})}">Remove</a>
+                        <a th:href="@{/cart/removeFromCart(id=${rec.cartid})}">Remove</a>
                     </td>
                 </tr>
             </table>

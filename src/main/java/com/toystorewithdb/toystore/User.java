@@ -1,12 +1,18 @@
 package com.toystorewithdb.toystore;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@Entity
+@Table(name = "users")
 public class User {
 
+    @Id
     @NotBlank(message = "Please provide your username", groups = {LoginChecks.class, SignupChecks.class})
     @Size(min=4,
           message = "Username must have more than 3 characters",
