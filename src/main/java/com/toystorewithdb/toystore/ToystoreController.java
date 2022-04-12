@@ -17,10 +17,12 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
 @Controller
+@RequestMapping("/")
 public class ToystoreController implements CommandLineRunner {
 
   @Autowired
@@ -56,7 +58,7 @@ public class ToystoreController implements CommandLineRunner {
 
   @PostMapping("/signup")
   public String checkRegister(@Validated(SignupChecks.class) User user, BindingResult result) {
-    // TODO: Search in database and insert non-existing new user to database
+    // TODO: Check Existence!
     if (result.hasErrors()) {
       return "signup";
     }
@@ -66,7 +68,7 @@ public class ToystoreController implements CommandLineRunner {
   
   @GetMapping("/toys/details")
   public String showMore(@RequestParam int id, Model model) {
-    Toy errorToy = new Toy(); 
+    Toy errorToy = new Toy();
     errorToy.setId(0);
     errorToy.setName("Empty");
     errorToy.setDescription("Your requested Toy does not exist");
@@ -124,10 +126,10 @@ public class ToystoreController implements CommandLineRunner {
   @GetMapping("/cart/removeFromCart")
   public String removeFromCart(@RequestParam int id, Model model){
     List<CartRecord> cart = cartRepo.findAllByUsername(sessionUser.getUsername());
+    // TODO: pop up an alert before removing the item
     if (cart != null){
       cartRepo.deleteByCartid(id);
     }
-    //model.addAttribute("cart", cart);
     return "redirect:/cart";
   }
    
@@ -135,19 +137,7 @@ public class ToystoreController implements CommandLineRunner {
   public String destroySession(HttpServletRequest request) {
     request.getSession().invalidate();
     return "redirect:/";
-  }   
-
-/*
-   @PostMapping("/toys/add")
-  public ResponseEntity<Toy> addToy(@RequestBody Toy newToy) throws Exception {
-    Toy toy = toyRepo.save(newToy);
-    if (toy == null) {
-      throw new Exception();
-    } else {
-      return new ResponseEntity<>(toy, HttpStatus.CREATED);
-    }
   }
- */
 
   @Override
   public void run(String... args) throws Exception {

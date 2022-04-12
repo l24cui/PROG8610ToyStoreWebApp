@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Toy List - Management</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+      <header>
+        <h1>Update Toy (
+          <span class="update_toy_id" th:text="${id}">Toy ID</span>
+           - 
+          <span class="update_toy_name" th:text="${name}">Toy Name</span>
+          ):
+        </h1>
+      </header>
+      <main>
+        <p>Current Description:</p>
+        <p class="detaildesc" th:text="${description}">Toy Description</p>
+        <div class="update">
+          <form class="form" th:action="@{/backend/update}" th:object="${toy}" method="post" >
+            <div>
+              <label for="id"> Toy ID: </label>
+              <input type="text" class="id" th:field="*{id}" id="id" size="20" value="${id}" readonly/>
+              <div class="errmsg" th:if="${#fields.hasErrors('id')}" th:errors="*{id}">ID Error</div>
+            </div>
+            <br>
+            <div>
+              <label for="name"> New Toy Name </label>
+              <br>
+              <input type="text" class="name" th:field="*{name}" id="name" size="20"/>
+              <div class="errmsg" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+            </div>
+            <br>
+            <div>
+              <label for="desc"> New Description </label>
+              <br>
+              <textarea class="desc" id="desc" th:field="*{description}" cols="40" rows="5"></textarea>
+              <div class="errmsg" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</div>
+            </div>
+            <button type="submit">Update</button>
+          </form>   
+        </div>
+      </main>
+    </body>
+</html>

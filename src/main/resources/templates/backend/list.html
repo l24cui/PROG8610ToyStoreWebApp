@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Toy List - Management</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Manage Toys:</h1>
+        </header>
+        <main>
+            <div class = "addlink">
+                <a href="/backend/add" size="5">
+                    <button type="button">Add A New Toy</button>
+                </a>    
+            </div>
+                <table class="toylist">
+                <tr th:each="toy: ${toylist}">
+                    <td class="id" th:text="${toy.id}">Toy ID</td>
+                    <td class="name" th:text="${toy.name}">Toy Name</td>
+                    <td class="desc" th:text="${toy.description}">Toy Description</td>
+                    <td class="button">
+                        <a th:href="@{/backend/update(id=${toy.id},name=${toy.name})}">Update</a>
+                    </td>
+                    <td class="button">
+                        <a th:href="@{/backend/delete(toyid=${toy.id})}">Delete</a>
+                    </td>
+                </tr>
+            </table>
+            <div class="errmsg" th:text="${#strings.isEmpty(msg)}?'':${msg}">Error Message</div>
+      </main>
+    </body>
+</html>

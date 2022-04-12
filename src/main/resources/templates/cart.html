@@ -9,18 +9,23 @@
             <h1>Shopping Cart:</h1>
         </header>
         <main>
-            <table class="cart">
+            <table class="toylist">
                 <tr th:each="rec: ${cart}">
                     <td class="name" th:text="${rec.name}">Toy Name</td>
                     <td class="desc" th:text="${rec.description}">Toy Description</td>
-                    <td class="button">
-                        <a th:href="@{/cart/removeFromCart(id=${rec.cartid})}">Remove</a>
+                    <td class="remove">
+                        <a th:href="@{/cart/removeFromCart(id=${rec.cartid})}">
+                            <button type="button">Remove</button>
+                        </a>
                     </td>
                 </tr>
             </table>
-            <div class="button">
-                <a href="/signout">Sign Out</a>
-            </div>
         </main>
+        <br>
+        <div class="signout">
+            <a href="/signout">
+                <button type="button">Sign Out</button>
+            </a>
+        </div>
     </body>
 </html>

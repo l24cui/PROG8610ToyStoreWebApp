@@ -18,14 +18,19 @@
                     <td class="link">
                         <a href=details.html th:href="@{/toys/details(id=${toy.id})}">More Details...</a>
                     </td>
-                    <td class="button">
-                        <a th:href="@{/toys/addToCart(toyid=${toy.id})}">Add To Shopping Cart</a>
+                    <td>
+                        <a th:href="@{/toys/addToCart(toyid=${toy.id})}">
+                            <button type="button">Add To Shopping Cart</button>
+                        </a>
                     </td>
                 </tr>
             </table>
-            <div class="link">
-                <a href="cart.html" th:href="@{/cart}">View Shopping Cart (<span th:text="${cartcount}"></span>)</a>
-            </div>
         </main>
+        <br>
+        <div class = "cartlink">
+            <a href="cart.html" th:href="@{/cart}">
+                <button type="button">View Shopping Cart (<span th:text="${cartcount}"></span>)</button>
+            </a>
+        </div>
     </body>
 </html>
