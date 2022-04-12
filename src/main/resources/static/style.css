@@ -57,14 +57,13 @@ main {
   color: #bc5704;
 }
 
-.cartlink {
-  text-align: center;
-}
-
 .course_info {
   text-align: center;
 }
 
-.signout {
+.centre {
   text-align: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
 }
